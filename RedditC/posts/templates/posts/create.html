@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% if message %}
+		{{message}}
+	{% endif %}
+	<h1>Creating new Post</h1>
+	<form method="POST" action={% url 'posts:create' %}>
+		{% csrf_token %} 
+		<input type="hidden" name="id" value="{{ user.id }}" />
+		<span>Tittle</span>
+		<br>
+		<input type="text" name="tittle">
+		<br>
+		<span>URL</span>
+		<br>
+		<input type="text" name="url">
+		<br>
+		<br>
+		<input class="btn btn-primary" type="submit" value="Post it!">
+	</form>
+{% endblock %}
